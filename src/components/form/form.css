@@ -10,9 +10,9 @@
 
 .viajero {
   display: grid;
-  grid-template-columns: repeat(2, 1fr) 10%;
+  grid-template-columns: repeat(3, 1fr) 10%;
 }
 
-.hide-form {
-  display: none;
+.viajero input {
+  width: 100%;
 }

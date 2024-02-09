@@ -1,6 +1,6 @@
 import "./form.css";
 import { useForm } from "../../hooks/useForm";
-import { useState } from "react";
+import { useToggle } from "../../hooks/useToggle";
 
 function Form() {
   const {
@@ -13,11 +13,13 @@ function Form() {
     setTime,
     setViajeros,
   } = useForm();
-
-  const [hide, setHide] = useState(false);
+  const { openApp, openTextInformation } = useToggle();
 
   const addViajero = () => {
-    setViajeros((prevState) => [...prevState, { name: '', numero: '' }]);
+    setViajeros((prevState) => [
+      ...prevState,
+      { name: "", numero: "", birthday: "" },
+    ]);
   };
 
   const updateViajero = (indexToUpdate, text, type) => {
@@ -42,12 +44,8 @@ function Form() {
     );
   };
 
-  const hideForm = () => {
-    setHide(true);
-  }
-
   return (
-    <div className={`form ${hide && 'hide-form'}`}>
+    <div className="form">
       <br />
 
       <div>
@@ -95,14 +93,26 @@ function Form() {
             <input
               type="text"
               value={viajero.name}
-              onChange={(e) => updateViajero(indexViajero, e.target.value, 'name')}
+              onChange={(e) =>
+                updateViajero(indexViajero, e.target.value, "name")
+              }
               placeholder="nombre"
             />
             <input
               type="number"
               value={viajero.numero}
               placeholder="numero"
-              onChange={(e) => updateViajero(indexViajero, e.target.value, 'numero')}
+              onChange={(e) =>
+                updateViajero(indexViajero, e.target.value, "numero")
+              }
+            />
+            <input
+              type="date"
+              value={viajero.birthday}
+              placeholder="birthday"
+              onChange={(e) =>
+                updateViajero(indexViajero, e.target.value, "birthday")
+              }
             />
             <button onClick={() => removeViajero(indexViajero)}>x</button>
           </div>
@@ -111,10 +121,19 @@ function Form() {
 
       <br />
 
-      <button onClick={hideForm}>Hide</button>
+      <button
+        onClick={openApp}
+      >
+        Open App
+      </button>
+      {' '}
+      <button
+        onClick={openTextInformation}
+      >
+        Open Text Information
+      </button>
 
       <br />
-
     </div>
   );
 }
