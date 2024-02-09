@@ -13,7 +13,7 @@ function Header() {
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
       const canvasDataURL = canvas.toDataURL('image/png');
       pdf.addImage(canvasDataURL, 'PNG', imgWidth / 2, 0, imgWidth, imgHeight);
-      pdf.save('download.pdf');
+      pdf.save(`CITA-${window.cita}.pdf`);
     });
   }
 

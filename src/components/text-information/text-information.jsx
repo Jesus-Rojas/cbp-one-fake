@@ -3,8 +3,8 @@ import { useForm } from "../../hooks/useForm";
 import { useToggle } from "../../hooks/useToggle";
 import { EnglishInformation } from "../english-information/english-information";
 import "./text-information.css";
-import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { getTextInformation } from "../../helpers/get-text-by-lang";
 
 function TextInformation() {
   const { viajeroSelected, date, lugar, time } = useForm();
@@ -23,29 +23,54 @@ function TextInformation() {
   };
 
   const getViajero = () => {
-    return viajeroSelected && (
-      <div>
-        <br />
-        <br />
-        {viajeroSelected.name}
-        <br />
-        {moment(viajeroSelected.birthday).format("MM/DD/YYYY")} (MM/DD/YYYY)
-        <br />
-        {viajeroSelected.numero}
-      </div>
-    )
+    return (
+      viajeroSelected && (
+        <div>
+          <br />
+          <br />
+          {viajeroSelected.name}
+          <br />
+          {moment(viajeroSelected.birthday).format("MM/DD/YYYY")} (MM/DD/YYYY)
+          <br />
+          {viajeroSelected.numero}
+        </div>
+      )
+    );
   };
 
   const downloadPdf = () => {
-    html2canvas(document.body).then((canvas) => {
-      const pdf = new jsPDF('p', 'pt', 'a4');
-      const imgWidth = 595.28 / 2;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      const canvasDataURL = canvas.toDataURL('image/png');
-      pdf.addImage(canvasDataURL, 'PNG', imgWidth / 2, 0, imgWidth, imgHeight);
-      pdf.save('download.pdf');
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "pt",
+      format: "a4",
     });
-  }
+    const sizeMargin = 60;
+    const margins = {
+      top: sizeMargin,
+      bottom: sizeMargin,
+      left: sizeMargin,
+      right: sizeMargin,
+    };
+
+    const fontSize = 10.3;
+    pdf.setFontSize(fontSize);
+    const lineHeight = fontSize * 1.2;
+    const lines = pdf.splitTextToSize(
+      getTextInformation(viajeroSelected, { date, lugar, time }),
+      pdf.internal.pageSize.getWidth() - margins.left - margins.right
+    );
+    let yPosition = margins.top;
+
+    lines.forEach((line) => {
+      if (yPosition > pdf.internal.pageSize.getHeight() - margins.bottom) {
+        pdf.addPage();
+        yPosition = margins.top;
+      }
+      pdf.text(line, margins.left, yPosition);
+      yPosition += lineHeight;
+    });
+    pdf.save(`CITA-${window.cita}-${viajeroSelected.name.toUpperCase()}.pdf`);
+  };
 
   return (
     <div className="container">
@@ -56,7 +81,9 @@ function TextInformation() {
       <br />
       <br />
       <br />
-      <span onClick={downloadPdf}>Sincerely, U.S. Customs and Border Protection</span>
+      <span onClick={downloadPdf}>
+        Sincerely, U.S. Customs and Border Protection
+      </span>
     </div>
   );
 }
