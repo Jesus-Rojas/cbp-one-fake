@@ -1,5 +1,5 @@
 .section-cita-information {
-  padding-top: 10vw;
+  padding-top: 37px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -7,9 +7,13 @@
   padding-right: 22px;
 }
 
+.container-check {
+  text-align: center;
+}
+
 .icon-check {
-  max-width: 80px;
-  margin: auto;
+  width: 80px;
+  height: 80px;
   fill: #5e9531;
 }
 

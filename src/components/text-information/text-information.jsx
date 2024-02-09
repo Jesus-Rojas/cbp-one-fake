@@ -2,12 +2,12 @@ import moment from "moment";
 import { useForm } from "../../hooks/useForm";
 import { useToggle } from "../../hooks/useToggle";
 import { EnglishInformation } from "../english-information/english-information";
-import { FrenchInformation } from "../french-information/french-information";
-import { SpanishInformation } from "../spanish-information/spanish-information";
 import "./text-information.css";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 function TextInformation() {
-  const { viajeros, date, lugar, time } = useForm();
+  const { viajeroSelected, date, lugar, time } = useForm();
   const { openForm } = useToggle();
 
   const getDetailCita = (entryText, dateText, timeText) => {
@@ -22,44 +22,41 @@ function TextInformation() {
     );
   };
 
-  const getViajeros = (lang) => {
-    return viajeros.map((viajero, index) => (
-      <div key={`viajero-${lang}-${index}`}>
+  const getViajero = () => {
+    return viajeroSelected && (
+      <div>
         <br />
         <br />
-        {viajero.name}
+        {viajeroSelected.name}
         <br />
-        {moment(viajero.birthday).format("MM/DD/YYYY")} (MM/DD/YYYY)
+        {moment(viajeroSelected.birthday).format("MM/DD/YYYY")} (MM/DD/YYYY)
         <br />
-        {viajero.numero}
+        {viajeroSelected.numero}
       </div>
-    ));
+    )
   };
+
+  const downloadPdf = () => {
+    html2canvas(document.body).then((canvas) => {
+      const pdf = new jsPDF('p', 'pt', 'a4');
+      const imgWidth = 595.28 / 2;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const canvasDataURL = canvas.toDataURL('image/png');
+      pdf.addImage(canvasDataURL, 'PNG', imgWidth / 2, 0, imgWidth, imgHeight);
+      pdf.save('download.pdf');
+    });
+  }
 
   return (
     <div className="container">
       <EnglishInformation
-        getViajeros={getViajeros}
+        getViajero={getViajero}
         getDetailCita={getDetailCita}
       />
       <br />
       <br />
       <br />
-      <SpanishInformation
-        getViajeros={getViajeros}
-        getDetailCita={getDetailCita}
-      />
-      <br />
-      <br />
-      <br />
-      <FrenchInformation
-        getViajeros={getViajeros}
-        getDetailCita={getDetailCita}
-      />
-      <br />
-      <br />
-      <br />
-      Sincerely, U.S. Customs and Border Protection
+      <span onClick={downloadPdf}>Sincerely, U.S. Customs and Border Protection</span>
     </div>
   );
 }

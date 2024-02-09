@@ -1,5 +1,5 @@
 function EnglishInformation(props) {
-  const { getViajeros, getDetailCita } = props;
+  const { getViajero, getDetailCita } = props;
 
   return (
     <>
@@ -20,7 +20,7 @@ function EnglishInformation(props) {
 
       Please see your confirmation number(s) below.
 
-      {getViajeros('en')}
+      {getViajero()}
 
       <br />
       <br />
