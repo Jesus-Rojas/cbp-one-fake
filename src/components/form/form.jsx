@@ -1,11 +1,53 @@
 import "./form.css";
 import { useForm } from "../../hooks/useForm";
+import { useState } from "react";
 
 function Form() {
-  const { date, lugar, time, setDate, setLugar, setTime } = useForm();
+  const {
+    date,
+    lugar,
+    time,
+    viajeros,
+    setDate,
+    setLugar,
+    setTime,
+    setViajeros,
+  } = useForm();
+
+  const [hide, setHide] = useState(false);
+
+  const addViajero = () => {
+    setViajeros((prevState) => [...prevState, { name: '', numero: '' }]);
+  };
+
+  const updateViajero = (indexToUpdate, text, type) => {
+    setViajeros(
+      viajeros.map((viajero, indexViajero) => {
+        if (indexToUpdate === indexViajero) {
+          return {
+            ...viajero,
+            [type]: text,
+          };
+        }
+        return viajero;
+      })
+    );
+  };
+
+  const removeViajero = (indexViajeroToDelete) => {
+    setViajeros(
+      viajeros.filter(
+        (__, indexViajero) => indexViajero !== indexViajeroToDelete
+      )
+    );
+  };
+
+  const hideForm = () => {
+    setHide(true);
+  }
 
   return (
-    <>
+    <div className={`form ${hide && 'hide-form'}`}>
       <br />
 
       <div>
@@ -42,13 +84,38 @@ function Form() {
       <br />
 
       <div>
-        <button>Agregar Viajero</button>
+        <button onClick={addViajero}>Agregar Viajero</button>
       </div>
 
       <br />
 
-      <div className="grid-viajeros"></div>
-    </>
+      <div className="grid-viajeros">
+        {viajeros.map((viajero, indexViajero) => (
+          <div className="viajero" key={`viajero-${indexViajero}`}>
+            <input
+              type="text"
+              value={viajero.name}
+              onChange={(e) => updateViajero(indexViajero, e.target.value, 'name')}
+              placeholder="nombre"
+            />
+            <input
+              type="number"
+              value={viajero.numero}
+              placeholder="numero"
+              onChange={(e) => updateViajero(indexViajero, e.target.value, 'numero')}
+            />
+            <button onClick={() => removeViajero(indexViajero)}>x</button>
+          </div>
+        ))}
+      </div>
+
+      <br />
+
+      <button onClick={hideForm}>Hide</button>
+
+      <br />
+
+    </div>
   );
 }
 

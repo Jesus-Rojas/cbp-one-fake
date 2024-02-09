@@ -29,7 +29,7 @@ function CitaInformation() {
         <br />
         <br />
 
-        Guarde su(s) número(s) de confirmación. Se envió un correo electrónico de confirmación a la dirección de correo electrónico que utilizó para iniciar sesión en 
+        Guarde su(s) número(s) de confirmación. Se envió un correo electrónico de confirmación a la dirección de correo electrónico que utilizó para iniciar sesión en {' '}
 
         <span>CBP One<sup>TM</sup>.</span>
       </p>
