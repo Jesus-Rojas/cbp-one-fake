@@ -1,5 +1,3 @@
-import "./french-information.css";
-
 function FrenchInformation(props) {
   const { getViajeros, getDetailCita } = props;
 

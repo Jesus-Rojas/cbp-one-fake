@@ -1,5 +1,3 @@
-import "./spanish-information.css";
-
 function SpanishInformation(props) {
   const { getViajeros, getDetailCita } = props;
 

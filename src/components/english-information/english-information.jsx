@@ -1,8 +1,3 @@
-import moment from "moment";
-import { useForm } from "../../hooks/useForm";
-import { useToggle } from "../../hooks/useToggle";
-import "./english-information.css";
-
 function EnglishInformation(props) {
   const { getViajeros, getDetailCita } = props;
 
