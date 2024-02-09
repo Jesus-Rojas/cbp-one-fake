@@ -1,7 +1,9 @@
-import { useState } from 'react'
 import './cita-information.css'
+import moment from "moment";
+import { useForm } from "../../hooks/useForm";
 
 function CitaInformation() {
+  const { date, time, lugar } = useForm();
 
   return (
     <div className="section-cita-information">
@@ -18,7 +20,7 @@ function CitaInformation() {
       </p>
 
       <p className="subtitle-information">
-        Su cita esta programada: San Ysidro el 09 feb 2024 a las 06:00.
+        Su cita esta programada: {lugar} el {moment(date).format("DD MMM YYYY")} a las {time}.
       </p>
 
       <p className="text-information">
