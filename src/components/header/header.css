@@ -1,0 +1,22 @@
+.header {
+  padding: 12px 20px;
+  background-color: #045086;
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-header {
+  font-size: 20px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.icon-header {
+  color: #fff;
+  fill: currentColor;
+  width: 25px;
+  height: 25px;
+  padding: 3px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}

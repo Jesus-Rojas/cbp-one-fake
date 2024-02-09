@@ -1,0 +1,38 @@
+.section-viajeros {
+  padding-top: 30px;
+  padding-left:  16px;
+  padding-right: 16px;
+}
+
+.header-section-viajeros {
+  display: flex;
+  text-transform: uppercase;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  color: #021d30;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+.grid-section-viajeros {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+.row-viajero {
+  display: grid;
+  grid-template-columns: 70% 1fr;
+  width: 100%;
+  font-size: 14px;
+  padding-top: 1rem;
+}
+
+.name-viajero {
+  text-transform: uppercase;
+}
+
+.numero-viajero {
+  text-align: right;
+}
