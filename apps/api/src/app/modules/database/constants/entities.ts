@@ -1,4 +1,4 @@
-import { AppointmentEntity } from "../../appointment/entities/appointment.entity";
+import { AppointmentEntity } from "../../appointment/entities/appointment-database.entity";
 
 export const entities = [
   AppointmentEntity

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppointmentController } from './controllers/appointment.controller';
-import { AppointmentEntity } from './entities/appointment.entity';
+import { AppointmentEntity } from './entities/appointment-database.entity';
 import { AppointmentService } from './services/appointment.service';
 
 @Module({

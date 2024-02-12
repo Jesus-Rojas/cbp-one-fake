@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { AppointmentEntity } from '../entities/appointment.entity';
+import { AppointmentEntity } from '../entities/appointment-database.entity';
 
 @Injectable()
 export class AppointmentService {

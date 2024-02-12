@@ -1,23 +1,15 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { AppointmentDatabase } from '../types/appointment.interface';
 
-
-// - email
-// - date
-// - time
-// - place
-// - travelers [{ name, birthday, numberOfConfirmation }]
-
-@Entity({
-  name: 'appointments'
-})
-export class AppointmentEntity {
+@Entity({ name: 'appointments' })
+export class AppointmentEntity implements AppointmentDatabase {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({
     type: 'datetime'
   })
-  date: Date;
+  dateTime: Date;
 
   @Column()
   email: string;
