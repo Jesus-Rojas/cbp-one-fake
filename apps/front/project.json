@@ -1,0 +1,8 @@
+{
+  "name": "front",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/front/src",
+  "projectType": "application",
+  "targets": {},
+  "tags": []
+}

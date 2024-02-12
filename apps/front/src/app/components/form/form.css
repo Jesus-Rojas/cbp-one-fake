@@ -1,0 +1,28 @@
+.form {
+  padding: 1rem;
+}
+
+.grid-viajeros {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 4px;
+}
+
+.viajero {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) repeat(2, 5%);
+}
+
+.viajero input {
+  width: 100%;
+}
+
+.viajero button {
+  background-color: transparent;
+  border: none;
+}
+
+.viajero button svg {
+  width: 10px;
+  height: 10px;
+}

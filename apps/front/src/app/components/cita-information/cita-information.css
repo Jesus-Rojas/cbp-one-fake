@@ -1,0 +1,58 @@
+.section-cita-information {
+  padding-top: 37px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left:  22px;
+  padding-right: 22px;
+}
+
+.container-check {
+  text-align: center;
+}
+
+.icon-check {
+  width: 80px;
+  height: 80px;
+  fill: #5e9531;
+}
+
+.title-information {
+  font-size: 24px;
+  color: #5e9531;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+.subtitle-information {
+  font-size: 12px;
+  color: #000;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.text-information {
+  font-size: 14px;
+  text-align: justify;
+}
+
+.text-information sup {
+  font-size: 6px;
+}
+
+.cancel-cita {
+  color: #a64458;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  padding: 16px;
+  font-size: 14px;
+  margin-top: .5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

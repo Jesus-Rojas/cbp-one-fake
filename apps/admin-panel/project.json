@@ -1,7 +1,7 @@
 {
-  "name": "cpb-one-front",
+  "name": "admin-panel",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/cpb-one-front/src",
+  "sourceRoot": "apps/admin-panel/src",
   "projectType": "application",
   "targets": {},
   "tags": []

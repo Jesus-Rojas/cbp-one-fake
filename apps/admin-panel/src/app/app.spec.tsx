@@ -20,6 +20,6 @@ describe('App', () => {
         <App />
       </BrowserRouter>
     );
-    expect(getByText(/Welcome cpb-one-front/gi)).toBeTruthy();
+    expect(getByText(/Welcome admin-panel/gi)).toBeTruthy();
   });
 });

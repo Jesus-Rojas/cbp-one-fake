@@ -1,11 +1,11 @@
 /* eslint-disable */
 export default {
-  displayName: 'cpb-one-front',
+  displayName: 'admin-panel',
   preset: '../../jest.preset.js',
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nx/react/plugins/jest',
     '^.+\\.[tj]sx?$': ['babel-jest', { presets: ['@nx/react/babel'] }],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/apps/cpb-one-front',
+  coverageDirectory: '../../coverage/apps/admin-panel',
 };
