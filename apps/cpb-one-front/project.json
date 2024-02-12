@@ -1,0 +1,8 @@
+{
+  "name": "cpb-one-front",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/cpb-one-front/src",
+  "projectType": "application",
+  "targets": {},
+  "tags": []
+}
