@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+:root {
+  --width-device: 375px;
+}
+
 html {
   box-sizing: border-box;
   font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
@@ -11,7 +15,7 @@ html {
 
 body {
   margin: 0 auto;
-  max-width: 375px;
+  max-width: var(--width-device);
 }
 
 img {

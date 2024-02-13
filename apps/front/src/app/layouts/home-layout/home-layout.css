@@ -2,16 +2,19 @@
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   z-index: -10;
+  margin: auto;
   object-fit: fill;
   height: 100%;
+  max-width: var(--width-device);
 }
 
 .container-dialog {
-  max-width: 75vw;
+  max-width: 282px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 32vw;
+  margin-top: 120px;
   background-color: #fff;
   border-radius: 4px;
   position: relative;
@@ -50,46 +53,8 @@
   display: inline-block;
 }
 
-.title-text {
-  text-align: center;
-  font-size: 20px;
-  margin-bottom: 12px;
-  color: #000000cf;
-}
-
-.title-text sup {
-  font-size: 8px;
-}
-
-.description-text {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 200px;
-  text-align: center;
-  font-size: 13px;
-  margin-top: 0;
-  color: #000000b0;
-}
-
-.button-continue {
-  background-color: #d81c2c;
-  text-transform: uppercase;
-  border-radius: 20px;
-  text-align: center;
-  width: 40vw;
-  border: none;
-  font-size: 14px;
-  color: #fff;
-  padding: 10px;
-  font-weight: bold;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-  display: block;
-}
-
 .login-gov-image {
-  max-width: 50vw;
+  max-width: 188px;
   display: block;
   margin-left: auto;
   margin-right: auto;
