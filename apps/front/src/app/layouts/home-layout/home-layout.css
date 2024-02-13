@@ -5,9 +5,8 @@
   right: 0;
   z-index: -10;
   margin: auto;
-  object-fit: fill;
+  object-fit: cover;
   height: 100%;
-  max-width: var(--width-device);
 }
 
 .container-dialog {
