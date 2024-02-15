@@ -5,5 +5,6 @@ export interface Appointment {
   email: string;
   dateTime: Date;
   place: string;
+  code: string;
   travelers: Traveler[];
 }

@@ -15,10 +15,14 @@ export class AppointmentEntity implements AppointmentDatabase {
   email: string;
 
   @Column()
+  code: string;
+
+  @Column()
   place: string;
 
   @Column({
-    default: JSON.stringify('[]'),
+    default: JSON.stringify([]),
+    type: 'text',
   })
   travelers: string;
 }

@@ -1,3 +1,4 @@
+import { Appointment } from '@cbp-one-fake/api-interfaces';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -10,7 +11,11 @@ export class AppointmentService {
     private readonly appointmentRepository: Repository<AppointmentEntity>
   ) { }
 
-  getAll() {
-    return this.appointmentRepository.find();
+  async getOneByCode(code: string): Promise<Appointment> {
+    const appointment = await this.appointmentRepository.findOneBy({ code });
+    if (appointment && appointment.id) {
+      appointment.travelers = JSON.parse(appointment.travelers);
+    }
+    return appointment as unknown as Appointment;
   }
 }

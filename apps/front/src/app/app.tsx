@@ -1,13 +1,15 @@
-import { LoginPage } from "./pages/login-page/login-page";
-import { UnauthorizedPage } from "./pages/unauthorized-page/unauthorized-page";
+import { Outlet } from "react-router-dom";
+import { Loading } from "./components/loading/loading";
+import { useLoading } from "./hooks/use-loading";
 
-export function App() {
+function App() {
+  const { isLoading } = useLoading();
   return (
     <>
-      <LoginPage />
-      {/* <UnauthorizedPage /> */}
+      {isLoading && <Loading />}
+      <Outlet />
     </>
   );
 }
 
-export default App;
+export { App };
