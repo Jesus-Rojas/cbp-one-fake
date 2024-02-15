@@ -21,7 +21,6 @@ export class AppointmentEntity implements AppointmentDatabase {
   place: string;
 
   @Column({
-    default: JSON.stringify([]),
     type: 'text',
   })
   travelers: string;
