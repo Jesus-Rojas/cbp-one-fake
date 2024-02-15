@@ -3,6 +3,7 @@ import { sleep } from '../../helpers/sleep';
 import { useAppointment } from '../../hooks/use-appointment';
 import { useLoading } from '../../hooks/use-loading';
 import { useRouter } from '../../hooks/use-router';
+import { ContentOption } from '../../types/content-option.interface';
 import './home-page.css';
 
 function HomePage() {
@@ -15,7 +16,44 @@ function HomePage() {
       goToLogin();
     }
   }, [appointment]);
-  
+
+  const contentOptions: ContentOption[] = [
+    {
+      urlImage: '/assets/opt-traveler.png',
+      text: 'Traveler | Viajero',
+      onClick: async () => {
+        setIsLoading(true);
+        await sleep();
+        setIsLoading(false);
+        goToTicket();
+      }
+    },
+    {
+      urlImage: '/assets/opt-broker.png',
+      text: 'Broker/Carrier/Forwarder',
+    },
+    {
+      urlImage: '/assets/opt-aircraft.png',
+      text: 'Aircraft Operator',
+    },
+    {
+      urlImage: '/assets/opt-bus.png',
+      text: 'Bus Operator',
+    },
+    {
+      urlImage: '/assets/opt-seaplane.png',
+      text: 'Seaplane Pilot',
+    },
+    {
+      urlImage: '/assets/opt-truck.png',
+      text: 'Commercial Truck Driver',
+    },
+    {
+      urlImage: '/assets/opt-org.png',
+      text: 'International Organization',
+    },
+  ];
+
   const renderIconHeader = (className = '') => (
     <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
       <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
@@ -27,19 +65,15 @@ function HomePage() {
     alert('Not working this moment')
   }
 
-  const renderContentOption = (urlImage: string, text: string, onClick = onClickDefaultContentOption) => (
-    <div className="content-option" onClick={onClick}>
-      <img src={urlImage} alt="" />
-      <span>{text}</span>
-    </div>
-  );
-
-  const handleTraveler = async () => {
-    setIsLoading(true);
-    await sleep();
-    setIsLoading(false);
-    goToTicket();
-  }
+  const renderContentOption = (contentOption: ContentOption, index: number) => {
+    const { text, urlImage, onClick = onClickDefaultContentOption } = contentOption;
+    return (
+      <div className="content-option" onClick={onClick} key={`content-option-${index}`}>
+        <img src={urlImage} alt="" />
+        <span>{text}</span>
+      </div>
+    );
+  };
 
   return (
     <div className='home-page'>
@@ -60,13 +94,7 @@ function HomePage() {
         </div>
       </div>
       <div className="content-options">
-        {renderContentOption('/assets/opt-traveler.png', 'Traveler | Viajero', handleTraveler)}
-        {renderContentOption('/assets/opt-broker.png', 'Broker/Carrier/Forwarder')}
-        {renderContentOption('/assets/opt-aircraft.png', 'Aircraft Operator')}
-        {renderContentOption('/assets/opt-bus.png', 'Bus Operator')}
-        {renderContentOption('/assets/opt-seaplane.png', 'Seaplane Pilot')}
-        {renderContentOption('/assets/opt-truck.png', 'Commercial Truck Driver')}
-        {renderContentOption('/assets/opt-org.png', 'International Organization')}
+        {contentOptions.map((contentOption, index) => renderContentOption(contentOption, index))}
       </div>
     </div>
   );
