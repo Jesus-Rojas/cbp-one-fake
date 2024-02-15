@@ -16,6 +16,6 @@ export const DATA_SOURCE_CONFIG: DataSourceOptions = {
         },
       }
     : {},
-  synchronize: true,
+  synchronize: false,
   logging: false,
 };
