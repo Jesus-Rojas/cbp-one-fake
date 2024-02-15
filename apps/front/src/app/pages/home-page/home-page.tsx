@@ -21,7 +21,7 @@ function HomePage() {
 
   const contentOptions: ContentOption[] = [
     {
-      urlImage: '/assets/opt-traveler.png',
+      urlImage: '/assets/images/opt-traveler.png',
       text: 'Traveler | Viajero',
       onClick: async () => {
         openLoading();
@@ -31,27 +31,27 @@ function HomePage() {
       }
     },
     {
-      urlImage: '/assets/opt-broker.png',
+      urlImage: '/assets/images/opt-broker.png',
       text: 'Broker/Carrier/Forwarder',
     },
     {
-      urlImage: '/assets/opt-aircraft.png',
+      urlImage: '/assets/images/opt-aircraft.png',
       text: 'Aircraft Operator',
     },
     {
-      urlImage: '/assets/opt-bus.png',
+      urlImage: '/assets/images/opt-bus.png',
       text: 'Bus Operator',
     },
     {
-      urlImage: '/assets/opt-seaplane.png',
+      urlImage: '/assets/images/opt-seaplane.png',
       text: 'Seaplane Pilot',
     },
     {
-      urlImage: '/assets/opt-truck.png',
+      urlImage: '/assets/images/opt-truck.png',
       text: 'Commercial Truck Driver',
     },
     {
-      urlImage: '/assets/opt-org.png',
+      urlImage: '/assets/images/opt-org.png',
       text: 'International Organization',
     },
   ];
@@ -79,7 +79,7 @@ function HomePage() {
         <span className='title-header'>Who Are You</span>
         {renderIconHeader()}
       </div>
-      <img className='cbp-one-image' src="/assets/cbp_one.png" alt="" />
+      <img className='cbp-one-image' src="/assets/images/cbp_one.png" alt="" />
       <div className="line-image"></div>
       <div className="content-information">
         <div className="title-content-information">
