@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { sleep } from '../../helpers/sleep';
 import { useAppointment } from '../../hooks/use-appointment';
+import { useComingSoon } from '../../hooks/use-coming-soon';
 import { useLoading } from '../../hooks/use-loading';
 import { useRouter } from '../../hooks/use-router';
 import { ContentOption } from '../../types/content-option.interface';
@@ -9,7 +10,8 @@ import './home-page.css';
 function HomePage() {
   const { goToTicket, goToLogin } = useRouter();
   const { appointment } = useAppointment();
-  const { setIsLoading } = useLoading();
+  const { open: openLoading, close: closeLoading } = useLoading();
+  const { open: openComingSoon } = useComingSoon();
 
   useEffect(() => {
     if (!(appointment && appointment.id)) {
@@ -22,9 +24,9 @@ function HomePage() {
       urlImage: '/assets/opt-traveler.png',
       text: 'Traveler | Viajero',
       onClick: async () => {
-        setIsLoading(true);
+        openLoading();
         await sleep();
-        setIsLoading(false);
+        closeLoading();
         goToTicket();
       }
     },
@@ -60,13 +62,8 @@ function HomePage() {
     </svg>
   );
 
-  const onClickDefaultContentOption = () => {
-    // Mostrar modal de iphone
-    alert('Not working this moment')
-  }
-
   const renderContentOption = (contentOption: ContentOption, index: number) => {
-    const { text, urlImage, onClick = onClickDefaultContentOption } = contentOption;
+    const { text, urlImage, onClick = openComingSoon } = contentOption;
     return (
       <div className="content-option" onClick={onClick} key={`content-option-${index}`}>
         <img src={urlImage} alt="" />

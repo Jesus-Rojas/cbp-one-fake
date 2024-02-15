@@ -6,9 +6,11 @@
   height: 100vh;
   display: grid;
   place-content: center;
+  background-color: rgba(0, 0, 0, .2);
+  z-index: 20;
 }
 
-.logo-image {
+.container-loading .logo-image {
   width: 188px;
   position: absolute;
   inset: 0;
@@ -16,11 +18,11 @@
   z-index: 10;
 }
 
-.container-loader {
+.container-loading .container-loader {
   position: relative;
 }
 
-.loader {
+.container-loading .loader {
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -30,7 +32,7 @@
   box-sizing: border-box;
   animation: rotation 1.2s linear infinite;
 }
-.loader::after {
+.container-loading .loader::after {
   content: '';  
   box-sizing: border-box;
   position: absolute;

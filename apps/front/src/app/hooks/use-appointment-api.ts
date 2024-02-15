@@ -5,11 +5,11 @@ import { sleep } from '../helpers/sleep';
 import { useAppointment } from './use-appointment';
 
 function useAppointmentApi() {
-  const { setIsLoading } = useLoading();
+  const { open: openLoading, close: closeLoading } = useLoading();
   const { setAppointment } = useAppointment();
 
   const getAppointment = useCallback(async () => {
-    setIsLoading(true);
+    openLoading();
     await sleep();
     const url = process.env['NX_URL_API'] ?? 'https://cbp-one-fake.onrender.com/api';
     try {
@@ -20,10 +20,10 @@ function useAppointmentApi() {
       );
       const appointment: Appointment = await response.json();
       setAppointment(appointment);
-      setIsLoading(false);
+      closeLoading();
       return appointment;
     } catch (error) {
-      setIsLoading(false);
+      closeLoading();
       return {} as Appointment;
     }
   }, []);

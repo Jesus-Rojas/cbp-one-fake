@@ -1,4 +1,3 @@
-import { useRouter } from '../../hooks/use-router';
 import './loading.css';
 
 function Loading() {

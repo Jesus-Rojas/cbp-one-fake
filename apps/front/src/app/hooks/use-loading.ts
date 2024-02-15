@@ -4,9 +4,12 @@ const isLoadingAtom = atom(false);
 
 export function useLoading() {
   const [isLoading, setIsLoading] = useAtom(isLoadingAtom);
+  const open = () => setIsLoading(true);
+  const close = () => setIsLoading(false);
 
   return {
     isLoading,
-    setIsLoading,
+    open,
+    close,
   };
 }
