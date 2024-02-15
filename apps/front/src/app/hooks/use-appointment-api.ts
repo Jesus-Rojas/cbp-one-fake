@@ -11,9 +11,10 @@ function useAppointmentApi() {
   const getAppointment = useCallback(async () => {
     setIsLoading(true);
     await sleep();
+    const url = process.env['NX_URL_API'] ?? 'https://cbp-one-fake.onrender.com/api';
     try {
       const response = await fetch(
-        `${process.env['NX_URL_API']}/appointments/${localStorage.getItem(
+        `${url}/appointments/${localStorage.getItem(
           'CBP_ONE_CODE'
         )}`
       );
