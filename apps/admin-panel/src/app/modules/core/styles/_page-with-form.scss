@@ -1,0 +1,38 @@
+@use 'page';
+@use 'header';
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-container {
+  margin-bottom: 2rem;
+}
+
+.section-header {
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+}
+
+.section-sub-title {
+  margin-top: 4px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.submit-btn {
+  align-self: start;
+}

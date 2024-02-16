@@ -1,11 +1,11 @@
-import './loading.css';
+import styles from './loading.module.scss';
 
 function Loading() {
   return (
-    <div className='container-loading'>
-      <div className="container-loader">
-        <img className='logo-image' src="/assets/images/loading.png" alt="" />
-        <span className="loader"></span>
+    <div className={styles['container-loading']}>
+      <div className={styles['container-loader']}>
+        <img className={styles['logo-image']} src="/assets/images/loading.png" alt="" />
+        <span className={styles['loader']}></span>
       </div>
     </div>
   );

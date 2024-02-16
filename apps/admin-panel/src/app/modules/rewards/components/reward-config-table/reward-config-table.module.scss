@@ -1,0 +1,58 @@
+@use 'page-with-table';
+
+.container {
+  max-width: 1200px;
+}
+.title {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 20px 16px 30px;
+}
+
+.dialog-content {
+  padding: 0 30px 20px;
+}
+
+.delete-btn,
+.cancel-btn {
+  align-self: flex-end;
+  text-transform: uppercase;
+}
+
+.delete-btn {
+  background-color: #6562ff;
+  color: #ffffff;
+  margin-right: 1.3rem;
+  outline: 1px solid #6562ff;
+  &:hover {
+    background-color: #4644b2;
+    outline: 1px solid #4644b2;
+  }
+}
+
+.cancel-btn {
+  background-color: #ffffff;
+  color: #6562ff;
+  margin-right: 1rem;
+  outline: 1px solid #6562ff;
+  &:hover {
+    background-color: #4644b2;
+    color: #ffffff;
+    outline: 1px solid #4644b2;
+  }
+}
+
+.row-action-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.row-action-button {
+  cursor: pointer;
+}
+.hdr {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}

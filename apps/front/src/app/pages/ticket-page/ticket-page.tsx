@@ -2,7 +2,7 @@ import moment from 'moment';
 import { useEffect } from 'react';
 import { useAppointment } from '../../hooks/use-appointment';
 import { useRouter } from '../../hooks/use-router';
-import './ticket-page.css';
+import styles from './ticket-page.module.scss';
 
 function TicketPage() {
   const { appointment } = useAppointment();
@@ -19,12 +19,12 @@ function TicketPage() {
   }
 
   return (
-    <div className="ticket-page">
-      <div className="header">
-        <div className="text-header">Información Anticipada</div>
-        <div className="container-icon">
+    <>
+      <div className={styles['header']}>
+        <div className={styles['text-header']}>Información Anticipada</div>
+        <div className={styles['container-icon']}>
           <svg
-            className="icon-header"
+            className={styles['icon-header']}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512"
           >
@@ -33,20 +33,20 @@ function TicketPage() {
         </div>
       </div>
 
-      <div className="section-cita-information">
-        <div className="container-check">
+      <div className={styles['section-cita-information']}>
+        <div className={styles['container-check']}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
-            className="icon-check"
+            className={styles['icon-check']}
           >
             <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" />
           </svg>
         </div>
 
-        <p className="title-information">cita programada</p>
+        <p className={styles['title-information']}>cita programada</p>
 
-        <p className="subtitle-information">
+        <p className={styles['subtitle-information']}>
           <>
             Su cita esta programada: {appointment.place} el{' '}
             {moment(appointment.dateTime).format('DD MMM YYYY')} a las{' '}
@@ -54,7 +54,7 @@ function TicketPage() {
           </>
         </p>
 
-        <p className="text-information">
+        <p className={styles['text-information']}>
           Su cita en un puerto de entrada se programó con éxito.
           <br />
           <br />
@@ -66,38 +66,38 @@ function TicketPage() {
           </span>
         </p>
 
-        <button className="cancel-cita">Cancelar cita</button>
+        <button className={styles['cancel-cita']}>Cancelar cita</button>
       </div>
 
-      <div className="section-viajeros">
-        <div className="header-section-viajeros">
+      <div className={styles['section-viajeros']}>
+        <div className={styles['header-section-viajeros']}>
           <span>viajeros</span>
           <span>número de confirmación</span>
         </div>
         <div className="grid-section-viajeros">
           {appointment.travelers.map((traveler, indexTraveler) => (
-            <div className="row-viajero" key={`row-viajero-${indexTraveler}`}>
-              <span className="name-viajero">{traveler.name}</span>
-              <span className="numero-viajero">{traveler.numberOfConfirmation}</span>
+            <div className={styles['row-viajero']} key={`row-viajero-${indexTraveler}`}>
+              <span className={styles['name-viajero']}>{traveler.name}</span>
+              <span className={styles['numero-viajero']}>{traveler.numberOfConfirmation}</span>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="section-detail-cita">
-        <div className="header-section-detail-cita">
+      <div className={styles['section-detail-cita']}>
+        <div className={styles['header-section-detail-cita']}>
           <span>detalles de la cita</span>
         </div>
-        <div className="content-section-detail-cita">
-          <div className="title-content">Puerto de entrada</div>
-          <div className="text-content">{appointment.place}</div>
+        <div className={styles['content-section-detail-cita']}>
+          <div className={styles['title-content']}>Puerto de entrada</div>
+          <div className={styles['text-content']}>{appointment.place}</div>
         </div>
       </div>
 
-      <div className="footer" onClick={back}>
+      <div className={styles['footer']} onClick={back}>
         Atrás
       </div>
-    </div>
+    </>
   );
 }
 

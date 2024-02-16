@@ -1,0 +1,22 @@
+.header {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.remove-margin {
+  margin-bottom: 0;
+}
+
+.title {
+  font-size: 2.125rem;
+  line-height: 1.235;
+  letter-spacing: 0.00735em;
+  font-weight: 400;
+}
+
+.sub-title {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,160 @@
+@use 'scrollbar' as s;
+
+.container {
+  @include s.scrollbar(8px, #c4c4c4, rgba(196, 196, 196, 0.5));
+}
+
+.table-container {
+  background-color: white;
+  width: 100%;
+  box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px,
+    rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
+  border-radius: 4px;
+}
+
+.content-table-body {
+  position: relative;
+}
+
+.table-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  .cell {
+    text-overflow: ellipsis;
+    background-color: #f1f0ff;
+    border-bottom: 2px solid #6562ff;
+    font-weight: 500;
+    min-width: 100px;
+  }
+}
+
+.handle {
+  width: 5px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+.handle-thumb {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  position: absolute;
+
+  &:hover {
+    background-color: #6e1fe3;
+  }
+}
+
+.resize-helper-container {
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  right: 2px;
+  top: 0;
+  z-index: 100;
+}
+
+.resize-helper {
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+  border-right: 1px dashed #6e1fe3;
+}
+
+.loader {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.row {
+  position: relative;
+
+  &:hover {
+    background-color: rgba(101, 98, 255, 0.05);
+  }
+}
+
+.table-row {
+  display: flex;
+  width: initial;
+}
+
+.cell {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.43;
+  text-align: left;
+  padding: 16px;
+  color: rgba(0, 0, 0, 0.87);
+  border-bottom: 1px solid rgb(224, 224, 224);
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+  min-width: 100px;
+}
+
+.cell-content {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.row-title {
+  white-space: nowrap;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  text-align: left;
+  padding: 16px;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.row-actions {
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border: 0;
+  height: 100%;
+  transition: all 240ms;
+  padding-right: 16px;
+
+  > *:first-child {
+    padding-left: 256px;
+    mask: linear-gradient(to right, transparent, black 70%);
+    -webkit-mask: linear-gradient(to right, transparent, black 70%);
+    background-color: #f7f7ff;
+  }
+}
+
+.row:hover {
+  & .row-actions {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.outer-table-type {
+  @include s.scrollbar(8px, #c4c4c4, rgba(196, 196, 196, 0.5));
+}
+
+.inner-table-type {
+  position: relative;
+}
+
+.row-selectable {
+  cursor: pointer;
+}

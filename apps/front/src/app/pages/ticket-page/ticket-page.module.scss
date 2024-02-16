@@ -1,0 +1,171 @@
+.header {
+  padding: 12px 20px;
+  background-color: #045086;
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-header {
+  font-size: 20px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.icon-header {
+  fill: #fff;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+}
+
+.container-icon {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.section-cita-information {
+  padding-top: 37px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left:  22px;
+  padding-right: 22px;
+}
+
+.container-check {
+  text-align: center;
+}
+
+.icon-check {
+  width: 80px;
+  height: 80px;
+  fill: #5e9531;
+}
+
+.title-information {
+  font-size: 24px;
+  color: #5e9531;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+.subtitle-information {
+  font-size: 12px;
+  color: #000;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.text-information {
+  font-size: 14px;
+  text-align: justify;
+}
+
+.text-information sup {
+  font-size: 6px;
+}
+
+.cancel-cita {
+  color: #a64458;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  padding: 16px;
+  font-size: 14px;
+  margin-top: .5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.section-viajeros {
+  padding-top: 30px;
+  padding-left:  16px;
+  padding-right: 16px;
+}
+
+.header-section-viajeros {
+  display: flex;
+  text-transform: uppercase;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  color: #021d30;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+.grid-section-viajeros {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+.row-viajero {
+  display: grid;
+  grid-template-columns: 70% 1fr;
+  width: 100%;
+  font-size: 14px;
+  padding-top: 1rem;
+}
+
+.name-viajero {
+  text-transform: uppercase;
+}
+
+.numero-viajero {
+  text-align: right;
+}
+
+.section-detail-cita {
+  padding-top: 30px;
+  padding-left:  16px;
+  padding-right: 16px;
+  padding-bottom: 2rem;
+}
+
+.header-section-detail-cita {
+  display: flex;
+  text-transform: uppercase;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  color: #021d30;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+.content-section-detail-cita {
+  padding-left: 8px;
+}
+
+.title-content {
+  color: #535353;
+  font-size: 14px;
+}
+
+.text-content {
+  padding-top: 8px;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.footer {
+  display: grid;
+  place-content: center;
+  text-transform: uppercase;
+  color: #025086;
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+  font-size: 14px;
+}

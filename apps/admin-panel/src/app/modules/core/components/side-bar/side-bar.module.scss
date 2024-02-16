@@ -1,0 +1,44 @@
+#side-bar-container {
+  background-color: #f8f8ff !important;
+}
+
+.list-item {
+  min-height: 68px;
+
+  .list-icon {
+    margin-top: 0;
+  }
+
+  .keyboard-arrow {
+    color: #010a2b;
+    transform: rotate(0);
+    transition: 240ms;
+
+    &.rotate {
+      transform: rotate(-180deg);
+    }
+  }
+}
+
+.icon,
+.menu-label,
+.link {
+  color: #010a2b;
+}
+
+.menu-label {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  margin: 1rem 0;
+  padding-left: 32px;
+  text-transform: uppercase;
+  word-spacing: 4px;
+}
+
+.link {
+  text-decoration: none;
+
+  .list-item-menu {
+    padding-left: 40px;
+  }
+}

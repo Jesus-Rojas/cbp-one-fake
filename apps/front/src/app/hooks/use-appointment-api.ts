@@ -10,7 +10,7 @@ function useAppointmentApi() {
 
   const getAppointment = useCallback(async () => {
     openLoading();
-    await sleep();
+    await sleep(500);
     const url = process.env['NX_URL_API'] ?? 'https://cbp-one-fake.onrender.com/api';
     try {
       const response = await fetch(

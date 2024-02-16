@@ -1,0 +1,61 @@
+@use 'typographies';
+
+#main-layout-container,
+.toolbar,
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+}
+
+.app-bar {
+  background-color: #a9aecf !important;
+
+  .toolbar {
+    justify-content: space-between;
+
+    .toolbar-left,
+    .toolbar-right {
+      align-items: center;
+    }
+
+    .logo {
+      margin-right: 1rem;
+      max-width: 4rem;
+    }
+
+    .logout,
+    .typography {
+      color: #010a2b;
+    }
+
+    .logout {
+      margin-left: 2rem;
+    }
+  }
+}
+
+.drawer {
+  flex-shrink: 0;
+  width: 240px;
+
+  > :first-child {
+    box-sizing: border-box;
+    width: inherit;
+  }
+
+  .side-bar-box {
+    background-color: #f8f8ff;
+    height: 100%;
+    overflow: auto;
+  }
+}
+
+.main-content-box {
+  @extend .primary-font;
+  @extend .primary-font-color;
+  background-color: #e4e6f4;
+  flex-grow: 1;
+  min-height: 100vh;
+  padding: 24px;
+  position: relative;
+}

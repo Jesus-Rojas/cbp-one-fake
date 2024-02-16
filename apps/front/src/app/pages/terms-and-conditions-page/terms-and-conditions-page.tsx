@@ -1,6 +1,6 @@
 import { useAppointmentApi } from '../../hooks/use-appointment-api';
 import { useRouter } from '../../hooks/use-router';
-import './terms-and-conditions-page.css';
+import styles from './terms-and-conditions-page.module.scss';
 
 function TermsAndConditionsPage() {
   const { goToLogin, goToHome } = useRouter();
@@ -16,12 +16,12 @@ function TermsAndConditionsPage() {
   }
 
   return (
-    <div className='terms-and-conditions-page'>
-      <div className="header">
+    <>
+      <div className={styles['header']}>
         Terms & Conditions
       </div>
 
-      <div className="content">
+      <div className={styles['content']}>
         <>
           The CBP One Mobile app is an official mobile application provided by
           U.S. Customs and Border Protection (CBP) that is intended to act as an
@@ -33,7 +33,7 @@ function TermsAndConditionsPage() {
         <br />
         <br />
 
-        <span className="content-title">INFORMATION COLLECTED</span>
+        <span className={styles['content-title']}>INFORMATION COLLECTED</span>
 
         <>
           After downloading the CBP One Mobile app, users will register with the
@@ -59,7 +59,7 @@ function TermsAndConditionsPage() {
         <br />
         <br />
 
-        <span className="content-title">USES OF INFORMATION</span>
+        <span className={styles['content-title']}>USES OF INFORMATION</span>
 
         <>
           Information gathered through the CBP One Mobile App can be used to
@@ -78,7 +78,7 @@ function TermsAndConditionsPage() {
         <br />
         <br />
 
-        <span className="content-title">INFORMATION SHARING</span>
+        <span className={styles['content-title']}>INFORMATION SHARING</span>
 
         <>
           CBP One Mobile App does not share information with
@@ -88,7 +88,7 @@ function TermsAndConditionsPage() {
         <br />
         <br />
 
-        <span className="content-title">APPLICATION SECURITY</span>
+        <span className={styles['content-title']}>APPLICATION SECURITY</span>
 
         <>
           CBP takes the security of your personal information
@@ -104,7 +104,7 @@ function TermsAndConditionsPage() {
         <br />
         <br />
 
-        <span className="content-title">HOW TO ACCESS OR CORRECT YOUR INFORMATION</span>
+        <span className={styles['content-title']}>HOW TO ACCESS OR CORRECT YOUR INFORMATION</span>
 
         <>
           CBP does not use CBP One
@@ -122,7 +122,7 @@ function TermsAndConditionsPage() {
         <br />
         <br />
         
-        <span className="content-title">ANALYTICS TOOLS</span>
+        <span className={styles['content-title']}>ANALYTICS TOOLS</span>
         <>
           This app does not deploy any analytics tools.
         </>
@@ -130,7 +130,7 @@ function TermsAndConditionsPage() {
         <br />
         <br />
         
-        <span className="content-title">PRIVACY POLICY CONTACT INFORMATION</span>
+        <span className={styles['content-title']}>PRIVACY POLICY CONTACT INFORMATION</span>
 
         <>
           This application reserves the right
@@ -183,13 +183,13 @@ function TermsAndConditionsPage() {
         </>
       </div>
 
-      <div className="actions">
-        <button className="decline-button" onClick={goToLogin}>Decline</button>
-        <button className="accept-button" onClick={handleAcceptButton}>Accept</button>
+      <div className={styles['actions']}>
+        <button className={styles['action-button']} onClick={goToLogin}>Decline</button>
+        <button className={styles['action-button']} onClick={handleAcceptButton}>Accept</button>
       </div>
 
-      <div className="footer"></div>
-    </div>
+      <div className={styles['footer']}></div>
+    </>
   );
 }
 

@@ -12,7 +12,21 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-  process.env['APP_ENV'] === 'dev' && app.enableCors();
+
+  const allowedOrigins = process.env['API_ALLOWED_ORIGINS']
+    ? JSON.parse(process.env['API_ALLOWED_ORIGINS'])
+    : [];
+
+  app.enableCors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+      callback(new Error('No permitido por CORS'));
+    },
+  });
+
   const port = process.env.PORT || 3000;
   await app.listen(port);
   Logger.log(
