@@ -1,0 +1,101 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  border: 1px dashed rgba(0, 0, 0, 0.23);
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 240ms;
+
+  &.container-filled {
+    min-height: 100px;
+  }
+
+  &:hover {
+    border-color: black;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.icon {
+  font-size: 1.8rem;
+  margin-bottom: 4px;
+  color: #6562ff;
+}
+
+.helper-text {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.browse-btn {
+  pointer-events: auto;
+}
+
+.extensions {
+  color: #6562ff;
+}
+
+.small {
+  font-size: 0.85rem;
+}
+
+.error {
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.66;
+  text-align: left;
+  margin-top: 3px;
+  margin-right: 14px;
+  margin-bottom: 0;
+  margin-left: 14px;
+  color: #d32f2f;
+}
+
+.with-errors {
+  $error-color: rgb(211, 47, 47);
+
+  .container {
+    border-color: $error-color;
+    color: $error-color;
+  }
+
+  .icon {
+    color: $error-color;
+  }
+
+  .extensions {
+    color: $error-color;
+  }
+
+  .browse-btn {
+    border-color: rgba(211, 47, 47, 0.5);
+    color: $error-color;
+
+    &:hover {
+      border-color: $error-color;
+    }
+  }
+
+  .helper-text {
+    color: $error-color;
+  }
+
+  .extensions {
+    font-weight: 500;
+  }
+}

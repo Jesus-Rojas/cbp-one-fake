@@ -1,1 +1,98 @@
 /* You can add global styles to this file, and also import other style files */
+@use './app/modules/core/styles/scrollbar' as s;
+@import '~flexlayout-react/style/light.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+html {
+  font-family: 'Roboto', sans-serif;
+  @include s.scrollbar(8px, #c4c4c4, rgba(196, 196, 196, 0.5));
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+.flexlayout__splitter {
+}
+
+.flexlayout__border_button,
+.flexlayout__tab_button {
+  margin: 0;
+  background-color: transparent;
+
+  &:hover {
+    background-color: rgba(101, 98, 255, 0.1);
+  }
+}
+
+.flexlayout__tab_button {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.flexlayout__border_button--selected {
+  border-bottom: 2px solid #6562ff;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.title-uppercase {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.MuiInputBase-root:not(.Mui-disabled) {
+  background-color: white;
+}
+
+.MuiInputBase-root.Mui-disabled {
+  margin-top: 22px;
+}
+
+.MuiInputBase-input.Mui-disabled {
+  color: rgba(0, 0, 0, 0.6) !important;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.MuiInputLabel-root.Mui-disabled {
+  transform: none;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+.MuiInput-root.Mui-disabled {
+  &:before {
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+  }
+}
+
+.MuiDialog-container {
+  backdrop-filter: blur(5px);
+
+  .MuiPaper-root {
+    background-color: #f5f5f5;
+  }
+}
+
+.flexlayout__tabset_content {
+  background-color: #f5f5f5;
+}
+
+.flexlayout__tab {
+  background-color: #f5f5f5;
+}

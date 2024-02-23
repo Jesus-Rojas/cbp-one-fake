@@ -1,4 +1,4 @@
-@use 'scrollbar' as s;
+@use '../../styles/scrollbar' as s;
 
 .container {
   @include s.scrollbar(8px, #c4c4c4, rgba(196, 196, 196, 0.5));

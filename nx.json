@@ -17,7 +17,6 @@
     ],
     "sharedGlobals": []
   },
-  "nxCloudAccessToken": "MmZmZjhmMWItZGJmZC00MmFhLWI2N2ItY2Q5MzBkNDU2YzAyfHJlYWQtd3JpdGU=",
   "plugins": [
     {
       "plugin": "@nx/webpack/plugin",
@@ -53,7 +52,8 @@
       },
       "library": {
         "style": "scss",
-        "linter": "eslint"
+        "linter": "eslint",
+        "unitTestRunner": "none"
       }
     }
   }

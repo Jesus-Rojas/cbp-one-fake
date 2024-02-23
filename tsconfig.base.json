@@ -16,7 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "@cbp-one-fake/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@cbp-one-fake/http-client-front": ["libs/http-client-front/src/index.ts"]
+      "@cbp-one-fake/http-client-front": [
+        "libs/http-client-front/src/index.ts"
+      ],
+      "@cbp-one-fake/ui-forms": ["libs/ui-forms/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

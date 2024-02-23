@@ -16,7 +16,7 @@ function useAppointmentApi() {
       const response = await fetch(
         `${url}/appointments/${localStorage.getItem(
           'CBP_ONE_CODE'
-        )}`
+        )}/valid`
       );
       const appointment: Appointment = await response.json();
       setAppointment(appointment);

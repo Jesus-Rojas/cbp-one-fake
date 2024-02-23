@@ -1,5 +1,5 @@
-@use 'page';
-@use 'header';
+@use './page';
+@use './header';
 
 .form-container {
   display: flex;

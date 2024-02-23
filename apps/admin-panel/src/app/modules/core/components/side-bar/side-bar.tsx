@@ -1,18 +1,21 @@
 import cn from 'classnames';
-import Collapse from '@mui/material/Collapse';
-import { Icon } from '@mui/material';
-import { isMenuText } from '../../helpers/is-menu-text';
-import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import { menu } from '../../constants/menu';
-import Paper from '@mui/material/Paper';
-import styles from './side-bar.module.scss';
+import { KeyboardArrowDown } from '@mui/icons-material';
+import {
+  Icon,
+  Collapse,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Paper,
+} from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+
+import { menu } from '../../constants/menu';
+import styles from './side-bar.module.scss';
 import { MenuItem, MenuType } from '../../types/menu-item';
+import { isMenuText } from '../../helpers/is-menu-text';
 
 export function SideBar() {
   const navigate = useNavigate();

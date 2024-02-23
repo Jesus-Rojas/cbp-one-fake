@@ -1,15 +1,18 @@
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Drawer from '@mui/material/Drawer';
-import { Icon } from '@mui/material';
-import { IconButton } from '@mui/material';
-import { SideBar } from '../side-bar/side-bar';
-import styles from './main-layout.module.scss';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import { useAccessToken } from '../../../access-control/hooks/use-access-token';
+import {
+  Typography,
+  Toolbar,
+  IconButton,
+  Icon,
+  Drawer,
+  CssBaseline,
+  Box,
+  AppBar,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
+import styles from './main-layout.module.scss';
+import { useAccessToken } from '../../../access-control/hooks/use-access-token';
+import { SideBar } from '../side-bar/side-bar';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -18,10 +21,10 @@ interface MainLayoutProps {
 export function MainLayout(props: MainLayoutProps) {
   const { children } = props;
   const navigate = useNavigate();
-  const { setAccessToken } = useAccessToken();
+  const { updateToken } = useAccessToken();
 
   const handleLoout = async () => {
-    setAccessToken('');
+    updateToken('');
     navigate('/login');
   };
 
@@ -35,18 +38,13 @@ export function MainLayout(props: MainLayoutProps) {
       >
         <Toolbar className={styles['toolbar']}>
           <div className={styles['toolbar-left']}>
-            <img
-              className={styles['logo']}
-              src="assets/shared/logo.png"
-              alt="ZooVerse Logo"
-            />
             <Typography
               className={styles['typography']}
               variant="h6"
               noWrap
               component="div"
             >
-              Zooverse | Admin Panel
+              Cbp One Fake | Admin Panel
             </Typography>
           </div>
           <div className={styles['toolbar-right']}>
