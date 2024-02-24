@@ -8,6 +8,12 @@ module.exports = {
   },
   devServer: {
     port: 4200,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        secure: false,
+      },
+    },
   },
   plugins: [
     new NxWebpackPlugin({
@@ -16,7 +22,11 @@ module.exports = {
       main: './src/main.tsx',
       index: './src/index.html',
       baseHref: '/',
-      assets: ['./src/favicon.ico', './src/assets'],
+      assets: [
+        './src/favicon.ico',
+        './src/assets',
+        './src/_redirects',
+      ],
       styles: ['./src/styles.scss'],
       outputHashing: process.env['NODE_ENV'] === 'production' ? 'all' : 'none',
       optimization: process.env['NODE_ENV'] === 'production',

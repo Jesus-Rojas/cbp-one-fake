@@ -1,0 +1,2 @@
+/api/*  https://cbp-one-fake.onrender.com/api/:splat  200
+/*    /index.html   200

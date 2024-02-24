@@ -3,13 +3,12 @@ import { useHttpClient } from '@cbp-one-fake/http-client-front';
 import { AxiosError } from 'axios';
 
 import { useErrorHandler } from '../../core/hooks/use-error-handler';
-import { environment } from '../../core/constants/environment';
 
 export function useLoginApi() {
   const { validate } = useErrorHandler();
   const { post } = useHttpClient({
     config: {
-      baseURL: environment.urlApi + '/login',
+      baseURL: '/api/login',
     },
     onError: ({ response }: AxiosError) => {
       if (response && response.status) {

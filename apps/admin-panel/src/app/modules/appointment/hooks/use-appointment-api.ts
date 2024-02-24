@@ -3,7 +3,6 @@ import { Appointment, CreateAppointment } from '@cbp-one-fake/api-interfaces';
 import { AxiosError } from 'axios';
 import { useAccessToken } from '../../access-control/hooks/use-access-token';
 import { useErrorHandler } from '../../core/hooks/use-error-handler';
-import { environment } from '../../core/constants/environment';
 
 export function useAppointmentApi() {
   const { accessToken } = useAccessToken();
@@ -15,7 +14,7 @@ export function useAppointmentApi() {
     delete: remove,
   } = useHttpClient({
     config: {
-      baseURL: environment.urlApi + '/appointments',
+      baseURL: '/api/appointments',
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
