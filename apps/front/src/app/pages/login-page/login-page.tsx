@@ -1,15 +1,25 @@
+import { sleep } from '../../helpers/sleep';
+import { useLoading } from '../../hooks/use-loading';
 import { useRouter } from '../../hooks/use-router';
 import styles from './login-page.module.scss';
 
 function LoginPage () {
   const { goToTermsAndConditions } = useRouter();
-  const handleVersion = () => {
-    const code = prompt('Ingrese su codigo de verificacion');
-    localStorage.setItem('CBP_ONE_CODE', code ?? '');
+  const { open, close } = useLoading();
+  
+  const handleLogin = async () => {
+    open();
+    await sleep();
+    close();
+    goToTermsAndConditions();
   }
   
   return (
     <>
+      <div className={styles['header']}>
+        <img src="/assets/images/flag-us.png" alt="" />
+        <p>Official App of the U.S. Departament of Homeland Security</p>
+      </div>
       <img className={styles['backdrop-image']} src="/assets/images/backdrop.png" alt="" />
       <div className={styles['container-dialog']}>
         <img className={styles['cbp-seal-image']} src="/assets/images/cbp_seal.png" alt="" />
@@ -20,13 +30,13 @@ function LoginPage () {
           A single portal to multiple CBP services to streamline your experience.
         </p>
         <button
-          onClick={goToTermsAndConditions}
+          onClick={handleLogin}
           className={styles['button-continue']}
         >
           LOGIN OR SIGNUP
         </button>
         <img className={styles['login-gov-image']} src="/assets/images/login_gov.png" alt="" />
-        <div className={styles['version']} onClick={handleVersion}>
+        <div className={styles['version']}>
           2.57.0
         </div>
       </div>

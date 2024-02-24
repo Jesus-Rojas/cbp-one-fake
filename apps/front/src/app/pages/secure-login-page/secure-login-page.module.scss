@@ -1,0 +1,98 @@
+.header {
+  display: flex;
+  height: 56px;
+  background-color: #ebf3fa;
+  align-items: center;
+  justify-content: center;
+
+  .login-gov {
+    width: 111px;
+    height: 15px;
+  }
+}
+
+.banner {
+  color: #fff;
+  background-color: #112e51;
+  padding-left: 1rem;
+  padding-right: 0;
+  display: flex;
+  width: 100%;
+  column-gap: 8px;
+  height: 48px;
+
+  .container-flag {
+    img {
+      width: 16px;
+      height: 11px;
+    }
+  }
+
+  .container-flag, .container-text {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: .75rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .verify-text {
+    text-decoration: underline;
+    position: relative;
+    width: fit-content;
+
+    svg {
+      position: absolute;
+      top: -2px;
+      right: -20px;
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+    }
+  }
+
+  .container-close {
+    margin-left: auto;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    background-color: #ebf3fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+
+    svg {
+      fill: #005ea2;
+    }
+  }
+
+}
+
+.d-none {
+  display: none !important;
+}
+
+.content-banner {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 8px;
+  padding-top: 16px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background-color: #ebf3fa;
+
+  p {
+    margin: 0;
+    line-height: 22px;
+    font-size: 15px;
+    color: rgb(69, 69, 69);
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+}

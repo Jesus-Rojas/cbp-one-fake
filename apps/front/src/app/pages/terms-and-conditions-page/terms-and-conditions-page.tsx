@@ -1,18 +1,17 @@
-import { useAppointmentApi } from '../../hooks/use-appointment-api';
+import { sleep } from '../../helpers/sleep';
+import { useLoading } from '../../hooks/use-loading';
 import { useRouter } from '../../hooks/use-router';
 import styles from './terms-and-conditions-page.module.scss';
 
 function TermsAndConditionsPage() {
-  const { goToLogin, goToHome } = useRouter();
-  const { getAppointment } = useAppointmentApi();
+  const { goToLogin, goToSecureLogin } = useRouter();
+  const { open, close } = useLoading();
 
   const handleAcceptButton = async () => {
-    const appointment = await getAppointment();
-    if (!(appointment && appointment.id)) {
-      goToLogin();
-      return;
-    }
-    goToHome();
+    open();
+    await sleep();
+    close();
+    goToSecureLogin();
   }
 
   return (

@@ -9,6 +9,10 @@ export function useRouter() {
     navigate('/login');
   }
 
+  function goToSecureLogin() {
+    navigate('/secure-login');
+  }
+
   function goToTermsAndConditions() {
     navigate('/terms-and-conditions');
   }
@@ -32,6 +36,7 @@ export function useRouter() {
   return {
     back: useCallback(back, [navigate]),
     goToLogin: useCallback(goToLogin, [navigate]),
+    goToSecureLogin: useCallback(goToSecureLogin, [navigate]),
     goToTicket: useCallback(goToTicket, [navigate]),
     goToTermsAndConditions: useCallback(goToTermsAndConditions, [navigate]),
     goToHome: useCallback(goToHome, [navigate]),
