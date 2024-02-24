@@ -17,6 +17,7 @@ export class RegisterController {
   async register(
     @Body() registerUserDto: RegisterDto,
   ) {
+    return;
     return this.registerService.register(registerUserDto);
   }
 }
