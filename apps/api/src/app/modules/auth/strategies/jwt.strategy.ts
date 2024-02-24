@@ -1,10 +1,9 @@
-import { Errors } from '@cbp-one-fake/api-interfaces';
+import { Errors, JwtPayload } from '@cbp-one-fake/api-interfaces';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
 import { AuthUserService } from '../../auth-user/services/auth-user.service';
-import { JwtPayload } from '../types/jwt-payload.interface';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {

@@ -5,7 +5,11 @@ import { sign } from 'jsonwebtoken';
 @Injectable()
 export class AuthService {
   createAccessToken(user: AuthUser) {
-    return sign({ userId: user.id }, process.env.JWT_SECRET.toString(), {
+    const payload = {
+      userId: user.id,
+      role: user.role,
+    };
+    return sign(payload, process.env.JWT_SECRET.toString(), {
       expiresIn: process.env.JWT_EXPIRATION,
     });
   }
