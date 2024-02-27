@@ -178,7 +178,9 @@ function TermsAndConditionsPage() {
           valid OMB control number and an expiration date. The control number for
           this collection is 1651-0140. The expiration date for this collection is
           05/31/2026. The estimated average time to complete this collection is 16
-          minutes. If you have any comments regarding the
+          minutes. If you have any comments regarding the burden estimate you can
+          write to U.S. Customs and Border Protection, Office of Regulations and 
+          Rulings, 90K Street, NE., Washington DC 20002.
         </>
       </div>
 

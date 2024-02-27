@@ -6,10 +6,29 @@ import styles from './secure-login-page.module.scss';
 import cn from 'classnames'
 
 
+enum FieldForm {
+  Email = 'email',
+  Password = 'password',
+  ShowPassword = 'showPassword',
+}
+
 function SecureLoginPage () {
   const { goToTermsAndConditions } = useRouter();
   const { open, close } = useLoading();
   const [isVerifySite, setIsVerifySite] = useState(false);
+  const [form, setForm] = useState({
+    [FieldForm.Email]: '',
+    [FieldForm.Password]: '',
+    [FieldForm.ShowPassword]: false,
+  });
+
+  const updateField = (fieldForm: FieldForm, value: unknown) => {
+    setForm((prevState) => ({
+      ...prevState,
+      [fieldForm]: value,
+    }));
+  };
+
   
   return (
     <>
@@ -102,12 +121,159 @@ function SecureLoginPage () {
           ) o <strong>https://</strong> significa que usted se conectó de forma segura a un sitio web .gov. Comparta información sensible sólo en sitios web oficiales y seguros.
         </p>
       </div>
+
       <div className={styles['header']}>
         <img
           src="https://secure.login.gov/assets/logo-a6f6c558.svg"
           className={styles['login-gov']}
           alt=""
         />
+      </div>
+
+      <div className={styles['container-page']}>
+        <div className={styles['container-sign-up-login']}>
+          <div className={styles['login']}>
+            Iniciar sesión
+          </div>
+          <div className={styles['sign-up']}>
+            Crear cuenta
+          </div>
+        </div>
+
+        <h2 className={styles['title-heading']}>
+          Iniciar sesión para usuarios existentes
+        </h2>
+
+        <div className={styles['form-login']}>
+          <p className={styles['field-text']}>
+            Dirección de correo electrónico
+          </p>
+
+          <input
+            type="email"
+            className={styles['field']}
+            onChange={(e) => updateField(FieldForm.Email, e.target.value)}
+            value={form[FieldForm.Email]}
+          />
+
+          <p className={styles['field-text']}>
+            Contraseña
+          </p>
+
+          <input 
+            type={!form[FieldForm.ShowPassword] ? 'password' : 'text'}
+            className={styles['field']} 
+            onChange={(e) => updateField(FieldForm.Password, e.target.value)}
+            value={form[FieldForm.Password]}
+          />
+
+          <div className={styles['see-password']}>
+            <input
+              type="checkbox"
+              checked={form[FieldForm.ShowPassword]}
+              readOnly
+            />
+            <span
+              onClick={() => updateField(FieldForm.ShowPassword, !form[FieldForm.ShowPassword])}
+            >
+              Mostrar contraseña
+            </span>
+          </div>
+
+          <button className={styles['login-submit']}>
+            Iniciar sesión
+          </button>
+        </div>
+
+        <div className={styles['page-footer']}>
+          <a
+            href="https://secure.login.gov/es/users/password/new"
+          >
+            ¿Olvidó su contraseña?
+          </a>
+
+          <a 
+            target="_blank" 
+            className={styles['external-site']}
+            href="https://www.login.gov/es/policy/"
+          >
+            Prácticas de seguridad y privacidad
+            
+            <span />
+          </a>
+
+          <a 
+            target="_blank" 
+            className={styles['external-site']}
+            href="https://www.login.gov/es/policy/our-privacy-act-statement/"
+          >
+            Declaración de la ley de privacidad
+            
+            <span />
+          </a>
+        </div>
+      </div>
+
+      <div className={styles['footer']}>
+        <button className={styles['language']}>
+          <img 
+            width="12" 
+            height="12" 
+            alt="" 
+            src="https://secure.login.gov/assets/globe-blue-a313543c.svg"
+          />
+
+          <span>Idioma</span>
+
+          <img 
+            width="12" 
+            height="12" 
+            alt="" 
+            src="https://secure.login.gov/assets/angle-arrow-up-ffbd5fa4.svg"
+          />
+        </button>
+
+        <div className={styles['footer-links']}>
+          <a
+            target="_blank"
+            className={cn(styles['external-site'], styles['img-link-footer'])}
+            href="https://www.gsa.gov"
+          >
+            <img
+              alt="Administración General de Servicios de EE. UU."
+              src="https://secure.login.gov/assets/sp-logos/square-gsa-dark-09497aa7.svg"
+              width="20"
+              height="20"
+            />
+            <span></span>
+          </a>
+          
+          <a
+            target="_blank"
+            className={styles['external-site']}
+            href="https://www.login.gov/es/help/"
+          >
+            Ayuda
+            <span></span>
+          </a>
+          
+          <a
+            target="_blank"
+            className={styles['external-site']}
+            href="https://www.login.gov/es/contact/"
+          >
+            Contactar
+            <span></span>
+          </a>
+          <a
+            target="_blank"
+            className={styles['external-site']}
+            href="https://www.login.gov/es/policy/"
+          >
+            Privacidad y seguridad
+            <span></span>
+          </a>
+        </div>
       </div>
     </>
   );

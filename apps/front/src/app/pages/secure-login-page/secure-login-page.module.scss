@@ -96,3 +96,213 @@
     height: 40px;
   }
 }
+
+.container-page {
+  padding: 32px 16px;
+}
+
+.container-sign-up-login {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  margin-bottom: 32px;
+
+  .sign-up, .login {
+    padding: 16px 20px;
+    font-size: 16px;
+    border: 2px solid #0071bb;
+    font-weight: 700;
+  }
+
+
+  .sign-up {
+    color: #0071bb;
+    background-color: #fff;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  .login {
+    background-color: #0071bb;
+    color: #fff;
+    border-top-left-radius: 8px;
+    border-left: none;
+    border-bottom-left-radius: 8px;
+  }
+}
+
+.title-heading {
+  font-weight: 700;
+  font-size: 24px;
+  color: rgb(69, 69, 69);
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.form-login {
+  margin-top: 32px;
+
+  .field-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(69, 69, 69);
+    margin-top: 24px;
+    margin-bottom: 0;
+  }
+
+  .field {
+    background-color: rgb(242, 249, 255);
+    border: 1px solid rgb(206, 220, 237);
+    width: 100%;
+    height: 48px;
+    border-radius: 4px;
+    margin-top: 4px;
+    font-size: 20px;
+    color: rgb(69, 69, 69);
+    font-weight: 700;
+  }
+
+  .see-password {
+    position: relative;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgb(69, 69, 69);
+    
+    input {
+      visibility: hidden;
+
+      &:checked + span::before {
+        background-size: 0.5rem;
+        box-shadow: inset 0 0 0 1px #0071bb;
+        background-position: 50%;
+        background-image: url(https://secure.login.gov/assets/correct8-bd4815f1.svg),linear-gradient(#0000,#0000);
+        background-repeat: no-repeat;
+        background-color: #0071bb;
+      }
+    }
+
+    span {
+      user-select: none;
+
+      &::before {
+        content: " ";
+        border-radius: 1.5px;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 8px;
+        background-color: #f2f9ff;
+        width: 14px;
+        height: 14px;
+        margin-top: 2px;
+        margin-left: 0;
+        margin-right: 0;
+        box-shadow: inset 0 0 0 1px #0071bb;
+      }
+    }
+  }
+
+  .login-submit {
+    background-color: rgb(32, 84, 147);
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    padding: 16px 20px;
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 32px;
+  }
+}
+
+.page-footer {
+  margin-top: 32px;
+  border-top: 1px solid rgb(206, 220, 237);
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  padding-top: 16px;
+
+  & a {
+    font-size: 16px;
+    color: #0071bb;
+  }
+
+}
+
+.external-site {
+  & ::after {
+    content: "";
+    vertical-align: middle;
+    width: 14.5px;
+    height: 14.5px;
+    margin-top: 5.7px;
+    margin-left: 2px;
+    padding-left: 14.5px;
+    display: inline;
+
+    background: currentColor;
+    mask-image: url(../../../assets/images/go-to-external-site.svg), linear-gradient(#0000,#0000);
+    mask-position: 50%;
+    mask-size: 14.5px 14.5px;
+    mask-repeat: no-repeat;
+
+    -webkit-mask-image: url(../../../assets/images/go-to-external-site.svg), linear-gradient(#0000,#0000);
+    -webkit-mask-position: 50%;
+    -webkit-mask-size: 14.5px 14.5px;
+    -webkit-mask-repeat: no-repeat;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(235, 243, 250);
+
+  .language {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    column-gap: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    border: 1px solid rgba(0, 0, 0, 0);
+    padding: 4px 8px;
+    background-color: rgba(0, 0, 0, 0);
+    align-items: center;
+
+    & > * {
+      color: #0071bb;
+      width: fit-content;
+    }
+
+    span {
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: space-around;
+    height: 36px;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+
+    a {
+      font-size: 12px;
+      color: rgb(0, 113, 187);
+    }
+
+    .img-link-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
