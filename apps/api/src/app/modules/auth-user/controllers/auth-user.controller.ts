@@ -3,18 +3,18 @@ import {
   Post,
   Body,
   Get,
-  UseGuards,
   Delete,
   Param,
   ParseIntPipe,
 } from '@nestjs/common';
 
-import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
 import { AuthUserService } from '../services/auth-user.service';
 import { RegisterDto } from '../../register/dtos/register.dto';
+import { RoleType } from '@cbp-one-fake/api-interfaces';
+import { AuthorizedFor } from '../../auth/decorators/authorized-for.decorator';
 
 @Controller('auth-user')
-@UseGuards(JwtAuthGuard)
+@AuthorizedFor(RoleType.Admin)
 export class AuthUserController {
   constructor(private readonly authUserService: AuthUserService) {}
 

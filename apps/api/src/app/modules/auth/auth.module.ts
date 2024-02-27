@@ -5,6 +5,8 @@ import { PassportModule } from '@nestjs/passport';
 import { AuthService } from './services/auth.service';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { AuthUserModule } from '../auth-user/auth-user.module';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthorizedForGuard } from './guards/authorized-for.guard';
 
 @Module({
   imports: [
@@ -17,7 +19,14 @@ import { AuthUserModule } from '../auth-user/auth-user.module';
     PassportModule.register({ defaultStrategy: 'jwt', session: false }),
     AuthUserModule,
   ],
-  providers: [AuthService, JwtStrategy],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthorizedForGuard,
+    },
+    AuthService,
+    JwtStrategy,
+  ],
   exports: [AuthService, JwtStrategy],
 })
 export class AuthModule {}

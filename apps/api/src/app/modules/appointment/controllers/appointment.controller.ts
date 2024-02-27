@@ -1,31 +1,28 @@
-import { Appointment, AuthUser, JwtPayload } from '@cbp-one-fake/api-interfaces';
+import { Appointment, AuthUser, RoleType } from '@cbp-one-fake/api-interfaces';
 import {
   Body,
   Controller,
   Delete,
   Get,
-  Logger,
-  NotFoundException,
   Param,
   ParseIntPipe,
   Post,
   Put,
-  Request,
-  UseGuards,
 } from '@nestjs/common';
-import { Request as RequestExpress } from 'express';
 
 import { AppointmentService } from '../services/appointment.service';
-import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
+import { Payload } from '../../auth/decorators/payload.decorator';
+import { AuthorizedFor } from '../../auth/decorators/authorized-for.decorator';
 
 @Controller('appointments')
-@UseGuards(JwtAuthGuard)
+@AuthorizedFor(RoleType.Admin)
 export class AppointmentController {
   constructor(private appointmentService: AppointmentService) {}
 
   @Get('me')
-  async getMe(@Request() req: RequestExpress) {
-    return this.appointmentService.getMe((req.user as AuthUser).username);
+  @AuthorizedFor(RoleType.User)
+  async getMe(@Payload() payload: AuthUser) {
+    return this.appointmentService.getMe(payload.username);
   }
 
   @Get('')
