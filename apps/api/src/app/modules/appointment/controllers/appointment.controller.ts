@@ -44,12 +44,12 @@ export class AppointmentController {
   }
 
   @Delete(':id')
-  async deletePartner(@Param('id', ParseIntPipe) id: number) {
+  async deleteAppointment(@Param('id', ParseIntPipe) id: number) {
     return this.appointmentService.delete(+id);
   }
 
   @Put(':id')
-  async updatePartner(
+  async updateAppointment(
     @Param('id', ParseIntPipe) id: number,
     @Body() appointment: Appointment
   ) {

@@ -1,0 +1,29 @@
+@use '../../core/styles/page-with-form';
+
+.sub-title {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 1rem;
+}
+
+.traveler-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 10%;
+  column-gap: 10px;
+}
+
+.icon-close {
+  margin: auto;
+  margin-left: 0;
+  cursor: pointer;
+}
+
+.icon-close-hidden {
+  visibility: hidden;
+}
+
+.section-title-travelers {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}

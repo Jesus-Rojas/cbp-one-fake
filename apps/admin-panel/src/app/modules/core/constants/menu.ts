@@ -8,4 +8,11 @@ export const menu: MenuItem[] = [
     path: 'appointments',
     type: MenuType.Child,
   },
+  {
+    key: 'users',
+    icon: 'manage_accounts',
+    label: 'Users',
+    path: 'users',
+    type: MenuType.Child,
+  },
 ];

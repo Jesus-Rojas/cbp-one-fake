@@ -6,6 +6,8 @@ import {
   DateTimePickerField,
 } from '@cbp-one-fake/ui-forms';
 import { LoadingButton } from '@mui/lab';
+import { Button } from '@mui/material';
+import cn from 'classnames';
 import { FormProvider } from 'react-hook-form';
 
 import styles from './appointment-form.module.scss';
@@ -13,8 +15,7 @@ import { useAppointmentForm } from '../hooks/use-appointment-form';
 import { Header } from '../../core/components/headers/header';
 import { FormMode } from '../../core/types/form-mode.enum';
 import { Icon } from '../../core/components/icon/icon';
-import { Button } from '@mui/material';
-import cn from 'classnames';
+
 
 export interface AppointmentFormProps {
   mode: FormMode;

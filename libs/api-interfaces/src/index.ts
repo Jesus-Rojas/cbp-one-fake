@@ -7,3 +7,4 @@ export * from './lib/auth-user.interface';
 export * from './lib/login-response.interface';
 export * from './lib/traveler.interface';
 export * from './lib/create-appointment.interface';
+export * from './lib/create-auth-user.interface';

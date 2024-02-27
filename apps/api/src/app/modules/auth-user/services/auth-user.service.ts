@@ -3,7 +3,7 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AuthUser } from '../entities/auth-user.entity';
 import * as bcrypt from 'bcrypt';
-import { Errors, Login } from '@cbp-one-fake/api-interfaces';
+import { Errors, Login, RoleType } from '@cbp-one-fake/api-interfaces';
 
 @Injectable()
 export class AuthUserService {
@@ -47,5 +47,15 @@ export class AuthUserService {
 
   checkPassword(password: string, attemptPass: string) {
     return bcrypt.compare(attemptPass, password);
+  }
+
+  getByRoleUser() {
+    return this.authUserRepository.findBy({
+      role: RoleType.User,
+    });
+  }
+
+  delete(id: number) {
+    this.authUserRepository.delete(id);
   }
 }
