@@ -3,16 +3,15 @@ import { useEffect } from 'react';
 import { useAppointment } from '../../hooks/use-appointment';
 import { useRouter } from '../../hooks/use-router';
 import styles from './ticket-page.module.scss';
+import { useOnInit } from '../../hooks/use-on-init';
 
 function TicketPage() {
-  const { appointment } = useAppointment();
+  const { appointment, getAppointment } = useAppointment();
   const { goToLogin, back } = useRouter();
 
-  useEffect(() => {
-    if (!(appointment && appointment.id)) {
-      goToLogin();
-    }
-  }, [appointment]);
+  useOnInit(() => {
+    getAppointment();
+  });
 
   if (!(appointment && appointment.id)) {
     return <div />;

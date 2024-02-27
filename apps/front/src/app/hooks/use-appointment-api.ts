@@ -1,30 +1,24 @@
-import { useCallback } from 'react';
 import { Appointment } from '@cbp-one-fake/api-interfaces';
-import { useLoading } from './use-loading';
-import { sleep } from '../helpers/sleep';
-import { useAppointment } from './use-appointment';
+import { useHttpClient } from '@cbp-one-fake/http-client-front';
+import { useNavigate } from 'react-router-dom';
+import { useAccessToken } from './use-access-token';
 
 function useAppointmentApi() {
-  const { open: openLoading, close: closeLoading } = useLoading();
-  const { setAppointment } = useAppointment();
+  const navigate = useNavigate();
+  const { accessToken } = useAccessToken();
+  const { get } = useHttpClient({
+    config: {
+      baseURL: '/api/appointments/me',
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      },
+    },
+    onError: () => navigate('/home'),
+  });
 
-  const getAppointment = useCallback(async () => {
-    openLoading();
-    await sleep(500);
-    const code = localStorage.getItem('CBP_ONE_CODE');
-    try {
-      const response = await fetch(`/api/appointments/${code}/valid`);
-      const appointment: Appointment = await response.json();
-      setAppointment(appointment);
-      closeLoading();
-      return appointment;
-    } catch (error) {
-      closeLoading();
-      return {} as Appointment;
-    }
-  }, []);
-
-  return { getAppointment };
+  return {
+    getMe: () => get<Appointment>('')
+  };
 }
 
 export { useAppointmentApi };

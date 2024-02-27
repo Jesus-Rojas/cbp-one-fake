@@ -7,16 +7,31 @@ import { useRouter } from '../../hooks/use-router';
 import { ContentOption } from '../../types/content-option.interface';
 import styles from './home-page.module.scss';
 import { useAccessToken } from '../../hooks/use-access-token';
+import { useOnInit } from '../../hooks/use-on-init';
+import { useLoginApi } from '../../hooks/use-login-api';
 
 function HomePage() {
   const { goToTicket, goToLogin } = useRouter();
   const { open: openLoading, close: closeLoading } = useLoading();
   const { open: openComingSoon } = useComingSoon();
-  const { accessToken } = useAccessToken();
+  const { accessToken, updateToken } = useAccessToken();
+  const { me } = useLoginApi();
 
-  useEffect(() => {
-    if (!accessToken) goToLogin();
-  }, [accessToken]);
+  useOnInit(() => {
+    if (!accessToken) {
+      goToLogin();
+      return;
+    };
+
+    (async () => {
+      try {
+        await me();
+      } catch (error) {
+        updateToken('');
+        goToLogin();
+      }
+    })();
+  });
 
   const contentOptions: ContentOption[] = [
     {
