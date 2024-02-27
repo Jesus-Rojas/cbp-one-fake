@@ -16,6 +16,7 @@ import styles from './appointment-table.module.scss';
 import { Icon } from '../../core/components/icon/icon';
 import { DataTable } from '../../core/components/data-table/data-table';
 import { useAppointmentTable } from '../hooks/use-appointment-table';
+import { Appointment } from '@cbp-one-fake/api-interfaces';
 
 export function AppointmentTable() {
   const {
@@ -27,24 +28,31 @@ export function AppointmentTable() {
     loadingDelete,
     deleteAppointment,
     openDialog,
+    downloadById,
   } = useAppointmentTable();
 
-  const rowActions = (row: { id: number }) => {
+  const rowActions = ({ id }: Appointment) => {
     return (
       <div className={styles['row-action-buttons']}>
+        <IconButton onClick={() => downloadById(id)}>
+          <Icon className={styles['row-action-button']}>
+            download
+          </Icon>
+        </IconButton>
+
         <IconButton>
-          <Link to={`view/${row.id}`}>
+          <Link to={`view/${id}`}>
             <Icon className={styles['row-action-button']}>visibility</Icon>
           </Link>
         </IconButton>
 
         <IconButton>
-          <Link to={`edit/${row.id}`}>
+          <Link to={`edit/${id}`}>
             <Icon className={styles['row-action-button']}>edit</Icon>
           </Link>
         </IconButton>
 
-        <IconButton onClick={() => openDialog(row.id)}>
+        <IconButton onClick={() => openDialog(id)}>
           <Icon className={styles['row-action-button']}>delete</Icon>
         </IconButton>
       </div>

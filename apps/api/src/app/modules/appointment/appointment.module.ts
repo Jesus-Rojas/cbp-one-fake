@@ -5,6 +5,7 @@ import { AppointmentController } from './controllers/appointment.controller';
 import { AppointmentEntity } from './entities/appointment-database.entity';
 import { AppointmentService } from './services/appointment.service';
 import { AuthUserModule } from '../auth-user/auth-user.module';
+import { PdfService } from './services/pdf.service';
 
 @Module({
   imports: [
@@ -14,6 +15,6 @@ import { AuthUserModule } from '../auth-user/auth-user.module';
     AuthUserModule,
   ],
   controllers: [AppointmentController],
-  providers: [AppointmentService],
+  providers: [AppointmentService, PdfService],
 })
 export class AppointmentModule {}

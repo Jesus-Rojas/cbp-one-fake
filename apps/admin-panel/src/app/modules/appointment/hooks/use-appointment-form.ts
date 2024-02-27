@@ -26,7 +26,7 @@ export function useAppointmentForm(props: AppointmentFormProps) {
   const navigate = useNavigate();
   const { control, handleSubmit, getValues, reset, watch, setValue } = formMethods;
   const [loading, setLoading] = useState(false);
-  const { createAppointment, updateAppointment, getAppointments } = useAppointmentApi();
+  const { createAppointment, updateAppointment, getAppointment } = useAppointmentApi();
   const { showToast } = useToast();
   const travelersForm = watch('travelers');
 
@@ -100,8 +100,7 @@ export function useAppointmentForm(props: AppointmentFormProps) {
     }
 
     try {
-      const appointments = await getAppointments();
-      const appointment = appointments.find((appointment) => appointment.id === Number(id));
+      const appointment = await getAppointment(Number(id));
       if (!appointment) return;
       
       reset({

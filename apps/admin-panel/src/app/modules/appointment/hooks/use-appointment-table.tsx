@@ -12,7 +12,11 @@ export function useAppointmentTable() {
   const [loadingTable, setLoadingTable] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [appointmentIdToDelete, setAppointmentIdToDelete] = useState<number>(0);
-  const { getAppointments: getAppointmentsApi, removeAppointment } = useAppointmentApi();
+  const {
+    getAppointments: getAppointmentsApi, 
+    removeAppointment, 
+    downloadAppointment,
+  } = useAppointmentApi();
   const { showToast } = useToast();
 
   const columnDefinitions: ColumnDefinition[] = [
@@ -70,6 +74,22 @@ export function useAppointmentTable() {
     setIsOpen(true);
   };
 
+  const downloadById = async (id: number) => {
+    try {
+      const blob = await downloadAppointment(id)
+      const fileReader = new FileReader();
+      fileReader.onloadend = () => {
+        const a = document.createElement('a');
+        a.href = fileReader.result as string;
+        a.target = '_blank';
+        a.click();
+      }
+      fileReader.readAsDataURL(blob);
+    } catch {
+      //
+    }
+  }
+
   useOnInit(() => {
     getAppointments();
   });
@@ -83,5 +103,6 @@ export function useAppointmentTable() {
     loadingDelete,
     deleteAppointment,
     openDialog,
+    downloadById,
   };
 }

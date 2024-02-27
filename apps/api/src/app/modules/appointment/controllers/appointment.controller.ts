@@ -8,7 +8,9 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  Res,
 } from '@nestjs/common';
+import { Response } from 'express';
 
 import { AppointmentService } from '../services/appointment.service';
 import { Payload } from '../../auth/decorators/payload.decorator';
@@ -21,7 +23,7 @@ export class AppointmentController {
 
   @Get('me')
   @AuthorizedFor(RoleType.User)
-  async getMe(@Payload() payload: AuthUser) {
+  getMe(@Payload() payload: AuthUser) {
     return this.appointmentService.getMe(payload.username);
   }
 
@@ -31,22 +33,37 @@ export class AppointmentController {
   }
 
   @Post()
-  createAppointment(@Body() appointment: Appointment) {
+  create(@Body() appointment: Appointment) {
     return this.appointmentService.create(appointment);
   }
 
+  @Get(':id/download')
+  async downloadById(
+    @Param('id', ParseIntPipe) id: number,
+    @Res() res: Response,
+  ) {
+    const pdfBuffer = await this.appointmentService.downloadById(+id);
+    res.set({
+      'Content-Type': 'application/pdf',
+      'Content-Disposition': `attachment; filename="appointment-${id}_${Date.now()}.pdf"`,
+      'Content-Length': pdfBuffer.length,
+    });
+
+    res.end(pdfBuffer);
+  }
+
   @Get(':id')
-  async getAppointmentById(@Param('id', ParseIntPipe) id: number) {
+  getById(@Param('id', ParseIntPipe) id: number) {
     return this.appointmentService.getOneById(+id);
   }
 
   @Delete(':id')
-  async deleteAppointment(@Param('id', ParseIntPipe) id: number) {
+  remove(@Param('id', ParseIntPipe) id: number) {
     return this.appointmentService.delete(+id);
   }
 
   @Put(':id')
-  async updateAppointment(
+  update(
     @Param('id', ParseIntPipe) id: number,
     @Body() appointment: Appointment
   ) {

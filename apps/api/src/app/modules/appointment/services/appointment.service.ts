@@ -4,14 +4,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { AppointmentEntity } from '../entities/appointment-database.entity';
 import { AppointmentDatabase } from '../types/appointment.interface';
-import { AuthUserService } from '../../auth-user/services/auth-user.service';
+import { PdfService } from './pdf.service';
 
 @Injectable()
 export class AppointmentService {
   constructor (
     @InjectRepository(AppointmentEntity)
     private readonly appointmentRepository: Repository<AppointmentEntity>,
-    private readonly authUserService: AuthUserService,
+    private readonly pdfService: PdfService,
   ) { }
 
   parseAppointments(appointments: AppointmentDatabase[]) {
@@ -20,7 +20,7 @@ export class AppointmentService {
 
   parseAppointment(appointment: AppointmentDatabase) {
     appointment.travelers = JSON.parse(appointment.travelers);
-    return appointment;
+    return appointment as unknown as Appointment;
   }
 
   async getMe(username: string) {
@@ -61,5 +61,10 @@ export class AppointmentService {
         travelers: JSON.stringify(data.travelers),
       }
     );
+  }
+
+  async downloadById(id: number) {
+    const appointment = await this.getOneById(id);
+    return this.pdfService.generate(appointment);
   }
 }
