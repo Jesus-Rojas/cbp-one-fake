@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { sleep } from '../../helpers/sleep';
 import { useLoading } from '../../hooks/use-loading';
 import { useRouter } from '../../hooks/use-router';
 import styles from './secure-login-page.module.scss';
 import cn from 'classnames'
+import { useLoginApi } from '../../hooks/use-login-api';
+import { useAccessToken } from '../../hooks/use-access-token';
 
 
 enum FieldForm {
@@ -13,14 +14,17 @@ enum FieldForm {
 }
 
 function SecureLoginPage () {
-  const { goToTermsAndConditions } = useRouter();
+  const { goToHome } = useRouter();
   const { open, close } = useLoading();
+  const { updateToken } = useAccessToken();
+  const { login } = useLoginApi();
   const [isVerifySite, setIsVerifySite] = useState(false);
   const [form, setForm] = useState({
     [FieldForm.Email]: '',
     [FieldForm.Password]: '',
     [FieldForm.ShowPassword]: false,
   });
+  
 
   const updateField = (fieldForm: FieldForm, value: unknown) => {
     setForm((prevState) => ({
@@ -28,6 +32,20 @@ function SecureLoginPage () {
       [fieldForm]: value,
     }));
   };
+
+  const handleSubmit = async () => {
+    const { email: username, password } = form;
+    if (!username.length || !password.length) return;
+    open();
+    try {
+      const { accessToken } = await login({ username, password });
+      updateToken(accessToken);
+      close();
+      goToHome();
+    } catch {
+      close();
+    }
+  }
 
   
   return (
@@ -180,7 +198,11 @@ function SecureLoginPage () {
             </span>
           </div>
 
-          <button className={styles['login-submit']}>
+          <button
+            className={styles['login-submit']}
+            onClick={handleSubmit}
+            type='button'
+          >
             Iniciar sesión
           </button>
         </div>

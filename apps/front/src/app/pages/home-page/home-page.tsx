@@ -6,18 +6,17 @@ import { useLoading } from '../../hooks/use-loading';
 import { useRouter } from '../../hooks/use-router';
 import { ContentOption } from '../../types/content-option.interface';
 import styles from './home-page.module.scss';
+import { useAccessToken } from '../../hooks/use-access-token';
 
 function HomePage() {
   const { goToTicket, goToLogin } = useRouter();
-  const { appointment } = useAppointment();
   const { open: openLoading, close: closeLoading } = useLoading();
   const { open: openComingSoon } = useComingSoon();
+  const { accessToken } = useAccessToken();
 
   useEffect(() => {
-    if (!(appointment && appointment.id)) {
-      goToLogin();
-    }
-  }, [appointment]);
+    if (!accessToken) goToLogin();
+  }, [accessToken]);
 
   const contentOptions: ContentOption[] = [
     {
