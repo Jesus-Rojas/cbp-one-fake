@@ -79,10 +79,8 @@ export function useAppointmentTable() {
       const blob = await downloadAppointment(id)
       const fileReader = new FileReader();
       fileReader.onloadend = () => {
-        const a = document.createElement('a');
-        a.href = fileReader.result as string;
-        a.target = '_blank';
-        a.click();
+        const url = fileReader.result as string;
+        window.open(url, '_blank');
       }
       fileReader.readAsDataURL(blob);
     } catch {
