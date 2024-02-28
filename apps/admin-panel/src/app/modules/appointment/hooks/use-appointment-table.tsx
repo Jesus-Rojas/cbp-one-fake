@@ -10,6 +10,7 @@ export function useAppointmentTable() {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [loadingDelete, setLoadingDelete] = useState(false);
   const [loadingTable, setLoadingTable] = useState(false);
+  const [urlPdf, setUrlPdf] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [appointmentIdToDelete, setAppointmentIdToDelete] = useState<number>(0);
   const {
@@ -74,13 +75,15 @@ export function useAppointmentTable() {
     setIsOpen(true);
   };
 
+  const closePdf = () => setUrlPdf('');
+
   const downloadById = async (id: number) => {
     try {
       const blob = await downloadAppointment(id)
       const fileReader = new FileReader();
       fileReader.onloadend = () => {
         const url = fileReader.result as string;
-        window.open(url, '_blank');
+        setUrlPdf(url);
       }
       fileReader.readAsDataURL(blob);
     } catch {
@@ -102,5 +105,7 @@ export function useAppointmentTable() {
     deleteAppointment,
     openDialog,
     downloadById,
+    urlPdf,
+    closePdf,
   };
 }

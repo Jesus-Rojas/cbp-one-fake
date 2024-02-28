@@ -29,6 +29,8 @@ export function AppointmentTable() {
     deleteAppointment,
     openDialog,
     downloadById,
+    urlPdf,
+    closePdf,
   } = useAppointmentTable();
 
   const rowActions = ({ id }: Appointment) => {
@@ -62,11 +64,13 @@ export function AppointmentTable() {
   return (
     <div className={styles['container']}>
       <Header title="Appointments" subtitle="List of appointments" />
+
       <div className={styles['actions-container']}>
         <Button variant="contained">
           <Link to="create">Create</Link>
         </Button>
       </div>
+
       <div className={styles['grid-container']}>
         <DataTable
           loading={loadingTable}
@@ -75,6 +79,18 @@ export function AppointmentTable() {
           rowActions={rowActions}
         />
       </div>
+
+      <Dialog
+        open={!!urlPdf}
+        onClose={closePdf}
+        className={styles['dialog-pdf']}
+      >
+        <iframe
+          src={urlPdf}
+          className={styles['iframe']}
+        />
+      </Dialog>
+
       <Dialog
         open={isOpen}
         onClose={closeDialog}
